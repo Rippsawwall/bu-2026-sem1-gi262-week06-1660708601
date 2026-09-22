@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MidtermExam.Prob02
@@ -13,7 +14,24 @@ namespace MidtermExam.Prob02
         public LinkedList<int> SortAscending(LinkedList<int> list)
         {
             // TODO: Implement sorting algorithm for LinkedList<int> (Ascending)
-            return list;
+            if (list == null || list.Count <= 1)
+            {
+                return list;
+            }
+            
+            LinkedList<int> result = new LinkedList<int>();
+            
+            foreach (int i in list)
+            {
+                result.AddLast(i);
+                if (i < result.Last.Value)
+                {
+                    LinkedListNode<int> node = result.Find(result.Last.Value);
+                    result.AddBefore(node, i);
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -23,8 +41,25 @@ namespace MidtermExam.Prob02
         /// <returns>LinkedList ที่ได้รับการเรียงลำดับจากมากไปน้อยแล้ว</returns>
         public LinkedList<int> SortDescending(LinkedList<int> list)
         {
-            // TODO: Implement sorting algorithm for LinkedList<int> (Descending)
-            return list;
+            // TODO: Implement sorting algorithm for LinkedList<int> (Ascending)
+            if (list == null || list.Count <= 1)
+            {
+                return list;
+            }
+
+            LinkedList<int> result = new LinkedList<int>();
+
+            foreach (int i in list)
+            {
+                result.AddLast(i);
+                if (i < result.Last.Value)
+                {
+                    LinkedListNode<int> node = result.Find(result.Last.Value);
+                    result.AddBefore(node, i);
+                }
+            }
+
+            return result;
         }
     }
 }
